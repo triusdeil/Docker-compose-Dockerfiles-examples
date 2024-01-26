@@ -1,0 +1,16 @@
+recuerda conf los archivos .yml en su respectivo orden
+
+levantamos el docker compose principal y buildeamos el archivo .prod 
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d  
+
+levantamos el docker compose principal y buildeamos el archivo .prod  y re buildeamos si existe algun cambio
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d  --build
+
+recuerda que el build no tiene el watch para refrescar la imagen por ende se quedara en espera y debemos usar el --build para que lea el cambio
+levantamos el docker compose principal y buildeamos el archivo .prod 
+
+con esto se eliminar la imagen y el volumen creado de este archivo el -v tambien quitara el volumen importante
+docker compose -f docker-compose.yml -f docker-compose.prod.yml down -v 
+
+con esto levantamos el archivo dockercompose principal y el .dev con el nodemon o watch y este quedara atento a los cambios
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d    
